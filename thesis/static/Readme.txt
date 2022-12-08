@@ -1,0 +1,1 @@
+This folder contains the css style used in the graphic user interface in the web application.

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Device registration</title>
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand">
+                        <img src="https://cdn.discordapp.com/attachments/969611350714241055/1024427336000622642/SINOCOIN-03.png" alt="..." height="36">
+                    </a>
+                    <a class="navbar-brand">Decentralized Code Execution Application</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link"><b>Contact</b> <span class="fw-bold text-primary mx-1">:</span> tavagios@ece.auth.gr</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </main>
+            <!-- Header-->
+            <header class="bg-dark py-3">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="my-5 text-center text-lg-center">
+                            <h1 class="fw-normal text-white mb-2">Device registration.</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Registration-->
+            <section class="py-2">
+                    <div class="my-5 text-center text-xl-center">
+                        {% if msg %}
+                        <h2 class="fw-bolder mb-0">{{ msg }}.</h2><br>
+                        {% else %}
+                        <h2 class="fw-bolder mb-0">Hello! Please follow the instructions.</h2><br>
+                        {% endif %}
+                    </div>                         
+            </section>
+            <!--Form-->
+            <div class="container-sm">
+                <div class="fw-light fs-4 justify-content-center">
+                    In order to complete your registration the following metrics of your device are required:<br>
+                    <div class="fw-light fs-5 mx-5 justify-content-center">
+                        -The RAM size of your device in MegaBytes.<br>
+                        -The frequency of the CPU of your device in MegaHertz.<br>
+                        -The number of the cores your device's CPU has.<br>
+                        -The size of your device's internal storage in MegaBytes.<br>
+                        -The unique MAC identifier of your device. Please make sure you enter the MAC address in the required format.<br><hr><br>
+                    </div>
+                </div>
+                <form action="http://127.0.0.1:5000/registerData" method="get";>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">RAM in MegaBytes</label>
+                            <div class="form-outline">
+                                <input type="text" name="RAM" class="form-control" placeholder="2048" required/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">CPU frequency in MegaHertz</label>
+                            <div class="form-outline">
+                                <input type="text" name="CPU" class="form-control" placeholder="1000" required/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Number of CPU cores</label>
+                            <div class="form-outline">
+                                <input type="text" name="Cores" class="form-control" placeholder="2" required/>
+                            </div>
+                        </div>
+                    </div><hr>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Internal storage size in MegaBytes</label>
+                            <div class="form-outline">
+                                <input type="text" name="Storage" class="form-control" placeholder="4096" required/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Unique MAC identifier</label>
+                            <div class="form-outline">
+                                <input type="text" name="MAC" class="form-control" minlength="17" maxlength="17" placeholder="00-00-00-00-00-00" required/><br>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

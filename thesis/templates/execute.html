@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Device registration</title>
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand">
+                        <img src="https://cdn.discordapp.com/attachments/969611350714241055/1024427336000622642/SINOCOIN-03.png" alt="..." height="36">
+                    </a>
+                    <a class="navbar-brand">Decentralized Code Execution Application</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link"><b>Contact</b> <span class="fw-bold text-primary mx-1">:</span> tavagios@ece.auth.gr</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </main>
+            <!-- Header-->
+            <header class="bg-dark py-3">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="my-5 text-center text-lg-center">
+                            <h1 class="fw-normal text-white mb-2">Code execution form</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Execution-->
+            <!--Form-->
+            <section class="py-2">
+                <div class="container-sm">
+                    <div class="fw-light fs-4 justify-content-center"><br>
+                        In order to successfully execute your code the following minimum requirements are mandatory:<br>
+                        <div class="fw-light fs-5 mx-5 justify-content-center">
+                            -The minimum RAM size in MegaBytes.<br>
+                            -The minimum CPU frequency in MegaHertz.<br>
+                            -The minimum number of CPU cores.<br>
+                            -The minimum internal storage size in MegaBytes.<br><br><hr><br>
+                        </div>
+                    </div>
+                    <form id="MinReq" action="http://127.0.0.1:5000/executeData" method="post";>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">RAM in MegaBytes</label>
+                                <div class="form-outline">
+                                    <input type="text" name="RAM" class="form-control" placeholder="2048" required/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">CPU frequency in MegaHertz</label>
+                                <div class="form-outline">
+                                    <input type="text" name="CPU" class="form-control" placeholder="1000" required/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Number of CPU cores</label>
+                                <div class="form-outline">
+                                    <input type="text" name="Cores" class="form-control" placeholder="2" required/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Internal storage size in MegaBytes</label>
+                                <div class="form-outline">
+                                    <input type="text" name="Storage" class="form-control" placeholder="4096" required/>
+                                </div>
+                            </div>
+                        </div><br><hr><br>
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                            <button onclick="func(); showSubmitButton();" class="btn btn-primary">Calculate the execution cost</button>
+                        </div>
+                        <div class="col">
+                            <label for="formFile" class="form-label">Upload your file</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="cost" class="fw-light fs-5"></p>
+                        </div>
+                        <div class="col">
+                            <div id="submitForm" style="display:none;">
+                                <div class="fw-light fs-5">Attention: Funds will be transfered after submission!</div>
+                                <input type="submit" form="MinReq" value="Submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            function func(){
+                var x = document.getElementById("MinReq");
+                var cost = 0;
+                cost = (x.elements[0].value * 0.001) + (x.elements[1].value * 0.001) + (x.elements[2].value * 1) + (x.elements[3].value * 0.001)
+                console.log(cost)
+                document.getElementById("cost").innerHTML = "The total cost will be " + cost + " SinoCoins";
+            }
+        </script>
+
+        <script>
+            function showSubmitButton(){
+                document.getElementById('submitForm').style.display = 'block';
+                document.getElementById('fileUpload').style.display = 'block';
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+This folder contains files that implement the migration of the smart contracts to the Blockchain.
